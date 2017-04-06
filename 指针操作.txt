@@ -1,0 +1,38 @@
+#include <stdio.h>
+void fun(char *a,int n)
+{
+int i=0,j=0;
+char *p,*t;
+p=t=a; 
+while(*t)  //让指针t指向串尾
+  t++;
+  t--;  //t指向串中的最后一个字符
+while(*t=='*')
+  //当t指针当前指向的字符是"*"号时
+{
+  j++;  //对"*"号计数的累加器加1
+  t--;  //指向前一个字符
+  }
+  t++;  //跳出"*"号统计后，指针t继续指向字符串的下一个字符
+if(j>n)  //对统计的"*"号数目大于给定的"*"号总数n
+  {
+  while(*p&&p<t+n)
+  //当超出给定的"*"号数目，则开始进行截取
+  { 
+    a[i]=*p;  //截取n个"*"号
+    i++;
+    p++;
+  }
+  a[i]='\0';  //对新生成的串加尾符
+ }
+}
+main()
+{char s[81]; int n;
+   
+   printf("Enter a string:\n");gets(s);
+   printf("Enter n : ");scanf("%d",&n);
+   fun(s,n);
+   printf("The string after deleted:\n");puts(s);
+  
+}
+
